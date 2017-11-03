@@ -1,8 +1,9 @@
 {
   "name": "charcodes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Char codes constants",
   "main": "lib/index.js",
+  "module": "src/index.js",
   "scripts": {
     "build": "BABEL_ENV=production babel --out-dir lib src/",
     "watch": "babel --out-dir lib src/ --watch",
