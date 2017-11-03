@@ -1,0 +1,2 @@
+# charcodes
+Char codes constants
