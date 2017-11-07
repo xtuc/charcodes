@@ -26,6 +26,18 @@ export default function (babel) {
             path.replaceWith(t.NumericLiteral(charCodeValue))
           } else {
             path.replaceWithSourceString(charCodeValue.toString()) 
+
+            // Replace the identifier by their value in the source
+            path.traverse({
+              Identifier(path) {
+                const name = path.node.name
+
+                if (typeof charcodes[name] !== "undefined" && typeof charcodes[name] !== "function") {
+          		  path.replaceWith(t.NumericLiteral(charcodes[name]))
+                }
+              }
+            })
+
           }
         }
       }
