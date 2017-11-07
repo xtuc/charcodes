@@ -1,7 +1,7 @@
 {
-  "name": "charcodes",
+  "name": "babel-plugin-transform-charcodes",
   "version": "0.0.3-0",
-  "description": "Char codes constants",
+  "description": "Replace charcodes AOT",
   "main": "lib/index.js",
   "module": "src/index.js",
   "repository": {
@@ -11,7 +11,8 @@
   "keywords": [
     "charcodes",
     "ascii",
-    "constants"
+    "constants",
+    "babel-plugin"
   ],
   "author": "Sven Sauleau",
   "license": "MIT",
@@ -30,5 +31,8 @@
       "@babel/preset-flow",
       "@babel/preset-env"
     ]
+  },
+  "dependencies": {
+    "charcodes": "^0.0.3-0"
   }
 }
