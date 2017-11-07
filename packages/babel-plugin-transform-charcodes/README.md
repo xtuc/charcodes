@@ -24,14 +24,14 @@ in:
 ```js
 import * as charcodes from "charcodes"
 
-charcodes.isDigit(1)
+(charcodes.isDigit(1))
 ```
 
 out:
 ```js
-function isDigit(code) {
+(function isDigit(code) {
   return code >= 48 && code <= 57;
-}(1)
+}(1))
 ```
 
 ## Installation
