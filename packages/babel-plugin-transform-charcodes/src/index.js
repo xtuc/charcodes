@@ -20,10 +20,12 @@ export default function (babel) {
       MemberExpression(path, state) {
         if (typeof state.importedLocalName !== "undefined" && path.node.object.name == state.importedLocalName) {
           const rightName = path.node.property.name
+          const charCodeValue = charcodes[rightName]
 
-          // TODO(sven): we can evaluate the function and inline the result
-          if (typeof charcodes[rightName] !== "function") {
-            path.replaceWith(t.NumericLiteral(charcodes[rightName]))
+          if (typeof charCodeValue !== "function") {
+            path.replaceWith(t.NumericLiteral(charCodeValue))
+          } else {
+            path.replaceWithSourceString(charCodeValue.toString()) 
           }
         }
       }
