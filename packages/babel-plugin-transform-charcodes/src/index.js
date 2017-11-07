@@ -8,11 +8,14 @@ export default function (babel) {
     name: "ast-transform", // not required
     visitor: {
       ImportDeclaration(path, state) {
-        state.importedLocalName = path.node.specifiers[0].local.name
+
+        if (path.node.source.name === "charcodes") {
+          state.importedLocalName = path.node.specifiers[0].local.name
+        }
       },
       
       MemberExpression(path, state) {
-        if (path.node.object.name == state.importedLocalName) {
+        if (typeof state.importedLocalName !== "undefined" && path.node.object.name == state.importedLocalName) {
           const rightName = path.node.property.name
 
           // TODO(sven): we can evaluate the function and inline the result
