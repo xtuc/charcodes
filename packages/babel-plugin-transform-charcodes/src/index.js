@@ -14,8 +14,11 @@ export default function (babel) {
       MemberExpression(path, state) {
         if (path.node.object.name == state.importedLocalName) {
           const rightName = path.node.property.name
-          
-          path.replaceWith(t.numberLiteral(charcodes[rightName]))
+
+          // TODO(sven): we can evaluate the function and inline the result
+          if (typeof charcodes[rightName] !== "function") {
+            path.replaceWith(t.NumericLiteral())
+          }
         }
       }
     }
