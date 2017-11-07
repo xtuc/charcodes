@@ -9,8 +9,11 @@ export default function (babel) {
     visitor: {
       ImportDeclaration(path, state) {
 
-        if (path.node.source.name === "charcodes") {
+        if (path.node.source.value === "charcodes") {
           state.importedLocalName = path.node.specifiers[0].local.name
+
+          // We remove the import just in case
+          path.remove()
         }
       },
       
@@ -20,7 +23,7 @@ export default function (babel) {
 
           // TODO(sven): we can evaluate the function and inline the result
           if (typeof charcodes[rightName] !== "function") {
-            path.replaceWith(t.NumericLiteral())
+            path.replaceWith(t.NumericLiteral(charcodes[rightName]))
           }
         }
       }
