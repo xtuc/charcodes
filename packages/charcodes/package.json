@@ -1,6 +1,6 @@
 {
   "name": "charcodes",
-  "version": "0.0.3",
+  "version": "0.0.6",
   "description": "Char codes constants",
   "main": "lib/index.js",
   "module": "src/index.js",
