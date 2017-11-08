@@ -1,12 +1,53 @@
 // @flow
+
 import * as charcodes from "charcodes"
+import {parse} from "babylon"
+import traverse from '@babel/traverse';
+
+type ast = Object
 
 export default function (babel) {
   const { types: t } = babel;
-  
+
+  function parseFunctionSource(str: string): ast {
+    const root = parse(str, {
+      sourceType: 'script',
+    })
+
+    return root.program.body[0];
+  }
+
+  function createInlineFunction(func: ast, id: ast): ast {
+
+    traverse(func, {
+      noScope: true,
+
+      Identifier(path) {
+        const name = path.node.name
+
+        if (typeof charcodes[name] !== "undefined" && typeof charcodes[name] !== "function") {
+          path.replaceWith(t.NumericLiteral(charcodes[name]))
+        }
+      }
+    })
+
+    return t.variableDeclaration(
+      'var',
+      [t.variableDeclarator(
+        id,
+        t.toExpression(func),
+      )]
+    )
+  }
+
+  function createCallExpression(id: ast): ast {
+    return t.callExpression(id, [])
+  }
+
   return {
-    name: "ast-transform", // not required
+
     visitor: {
+
       ImportDeclaration(path, state) {
 
         if (path.node.source.value === "charcodes") {
@@ -16,7 +57,7 @@ export default function (babel) {
           path.remove()
         }
       },
-      
+
       MemberExpression(path, state) {
         if (typeof state.importedLocalName !== "undefined" && path.node.object.name == state.importedLocalName) {
           const rightName = path.node.property.name
@@ -25,23 +66,28 @@ export default function (babel) {
           if (typeof charCodeValue !== "function") {
             path.replaceWith(t.NumericLiteral(charCodeValue))
           } else {
-            path.replaceWithSourceString(charCodeValue.toString()) 
+            const fn = parseFunctionSource(charCodeValue.toString())
+            const id = path.scope.generateUidIdentifier()
 
-            // Replace the identifier by their value in the source
-            path.traverse({
-              Identifier(path) {
-                const name = path.node.name
+            state._toHoist.push(createInlineFunction(fn, id))
 
-                if (typeof charcodes[name] !== "undefined" && typeof charcodes[name] !== "function") {
-          		  path.replaceWith(t.NumericLiteral(charcodes[name]))
-                }
-              }
-            })
-
+            path.replaceWith(createCallExpression(id))
           }
+        }
+      },
+
+      Program: {
+        enter(path, state) {
+          state._toHoist = [];
+        },
+
+        exit(path, state) {
+          state._toHoist.forEach(x => {
+            path.node.body.unshift(x)
+          })
         }
       }
     }
+
   };
 }
-

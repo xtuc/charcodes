@@ -4,6 +4,9 @@
   "description": "Replace charcodes AOT",
   "main": "lib/index.js",
   "module": "src/index.js",
+  "scripts": {
+    "test": "mocha --require @babel/register"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xtuc/charcodes.git"
@@ -24,7 +27,11 @@
     "@babel/cli": "^7.0.0-beta.5",
     "@babel/core": "^7.0.0-beta.5",
     "@babel/preset-env": "^7.0.0-beta.5",
-    "@babel/preset-flow": "^7.0.0-beta.5"
+    "@babel/preset-flow": "^7.0.0-beta.5",
+    "@babel/register": "^7.0.0-beta.31",
+    "@babel/types": "^7.0.0-beta.31",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
   },
   "babel": {
     "presets": [
@@ -33,6 +40,8 @@
     ]
   },
   "dependencies": {
+    "babylon": "^7.0.0-beta.31",
+    "@babel/traverse": "^7.0.0-beta.31",
     "charcodes": "^0.0.3"
   }
 }

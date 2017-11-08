@@ -3,3 +3,6 @@ build:
 
 publish: build
 	lerna publish
+
+test:
+	lerna run test
