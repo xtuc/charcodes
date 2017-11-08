@@ -63,7 +63,7 @@ export default function (babel) {
             path.replaceWith(t.NumericLiteral(charCodeValue))
           } else {
             const fn = parseFunctionSource(charCodeValue.toString())
-            const id = path.scope.generateUidIdentifier()
+            const id = path.scope.generateUidIdentifier(rightName)
 
             state._toHoist.push(createInlineFunction(fn, id))
 

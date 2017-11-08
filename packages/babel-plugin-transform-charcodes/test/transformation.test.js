@@ -33,10 +33,10 @@ describe('function', () => {
     `)
 
     const expected = `
-      var _temp = function isDigit(code) {
+      var _isDigit = function isDigit(code) {
           return code >= 48 && code <= 57;
       };
-      _temp(1);
+      _isDigit(1);
     `
 
     assertOutput(expected, out)
