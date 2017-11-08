@@ -40,10 +40,6 @@ export default function (babel) {
     )
   }
 
-  function createCallExpression(id: ast): ast {
-    return t.callExpression(id, [])
-  }
-
   return {
 
     visitor: {
@@ -71,7 +67,7 @@ export default function (babel) {
 
             state._toHoist.push(createInlineFunction(fn, id))
 
-            path.replaceWith(createCallExpression(id))
+            path.replaceWith(id)
           }
         }
       },

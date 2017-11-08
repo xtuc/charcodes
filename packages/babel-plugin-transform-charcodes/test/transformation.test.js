@@ -36,7 +36,7 @@ describe('function', () => {
       var _temp = function isDigit(code) {
           return code >= 48 && code <= 57;
       };
-      _temp()(1);
+      _temp(1);
     `
 
     assertOutput(expected, out)
