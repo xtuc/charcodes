@@ -61,4 +61,15 @@ describe('constant', () => {
     assertOutput(expected, out)
   })
 
+  it('should throw if the key is unknown', () => {
+
+    const fn = () => transform(`
+      import * as charcodes from "charcodes"
+
+      charcodes.somethinglikefoobar
+    `)
+
+    assert.throws(fn, /unknown key/);
+  })
+
 })

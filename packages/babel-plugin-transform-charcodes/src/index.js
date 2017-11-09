@@ -59,7 +59,9 @@ export default function (babel) {
           const rightName = path.node.property.name
           const charCodeValue = charcodes[rightName]
 
-          if (typeof charCodeValue !== "function") {
+          if (typeof charCodeValue === "undefined") {
+            throw new Error("unknown key " + rightName)
+          } else if (typeof charCodeValue !== "function") {
             path.replaceWith(t.NumericLiteral(charCodeValue))
           } else {
             const fn = parseFunctionSource(charCodeValue.toString())
