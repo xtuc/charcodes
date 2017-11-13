@@ -6,3 +6,7 @@ publish: build
 
 test:
 	lerna run test
+
+test-ci:
+	lerna bootstrap
+	lerna run test
