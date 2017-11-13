@@ -19,3 +19,7 @@ clean-all:
 	rm -rf packages/*/node_modules
 	rm -rf packages/*/lib
 	rm -rf packages/*/package-lock.json
+
+test-ci:
+	./node_modules/.bin/lerna bootstrap
+	./node_modules/.bin/lerna run test
