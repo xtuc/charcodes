@@ -1,17 +1,19 @@
+export PATH := $(PATH):./node_modules/.bin/
+
 bootstrap:
 	make clean-all
 	yarn
-	./node_modules/.bin/lerna bootstrap
+	lerna bootstrap
 	make build
 
 build:
 	./scripts/build.sh
 
 publish: build
-	./node_modules/.bin/lerna publish
+	lerna publish
 
 test:
-	./node_modules/.bin/lerna run test
+	lerna run test
 
 clean-all:
 	rm -rf node_modules
@@ -20,6 +22,4 @@ clean-all:
 	rm -rf packages/*/lib
 	rm -rf packages/*/package-lock.json
 
-test-ci:
-	./node_modules/.bin/lerna bootstrap
-	./node_modules/.bin/lerna run test
+test-ci: bootstrap test
