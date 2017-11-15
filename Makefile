@@ -10,7 +10,7 @@ build:
 	./scripts/build.sh
 
 publish: build
-	lerna publish
+	lerna publish --force-publish=*
 
 test:
 	lerna run test
