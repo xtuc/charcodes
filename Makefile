@@ -6,7 +6,10 @@ bootstrap:
 	lerna bootstrap
 	make build
 
-build:
+doc-charcodes:
+	dump-exports ./packages/charcodes/src/index.js > ./packages/charcodes/README.md
+
+build: doc-charcodes
 	./scripts/build.sh
 
 publish: build

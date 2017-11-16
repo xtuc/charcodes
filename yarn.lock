@@ -85,7 +85,7 @@
     babylon "7.0.0-beta.32"
     lodash "^4.2.0"
 
-"@babel/traverse@7.0.0-beta.32":
+"@babel/traverse@7.0.0-beta.32", "@babel/traverse@^7.0.0-beta.32":
   version "7.0.0-beta.32"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.0.0-beta.32.tgz#b78b754c6e1af3360626183738e4c7a05951bc99"
   dependencies:
@@ -98,7 +98,7 @@
     invariant "^2.2.0"
     lodash "^4.2.0"
 
-"@babel/types@7.0.0-beta.32":
+"@babel/types@7.0.0-beta.32", "@babel/types@^7.0.0-beta.32":
   version "7.0.0-beta.32"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.0.0-beta.32.tgz#c317d0ecc89297b80bbcb2f50608e31f6452a5ff"
   dependencies:
@@ -240,7 +240,7 @@ aws4@^1.2.1:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
 
-babylon@7.0.0-beta.32:
+babylon@7.0.0-beta.32, babylon@^7.0.0-beta.32:
   version "7.0.0-beta.32"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.32.tgz#e9033cb077f64d6895f4125968b37dc0a8c3bc6e"
 
@@ -702,6 +702,14 @@ dot-prop@^3.0.0:
   resolved "https://registry.yarnpkg.com/dot-prop/-/dot-prop-3.0.0.tgz#1b708af094a49c9a0e7dbcad790aba539dac1177"
   dependencies:
     is-obj "^1.0.0"
+
+dump-exports@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/dump-exports/-/dump-exports-0.0.1.tgz#034c52620cfceb7b34c483a3e646c4b56f5965ce"
+  dependencies:
+    "@babel/traverse" "^7.0.0-beta.32"
+    "@babel/types" "^7.0.0-beta.32"
+    babylon "^7.0.0-beta.32"
 
 duplexer3@^0.1.4:
   version "0.1.4"
