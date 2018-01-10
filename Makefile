@@ -12,7 +12,7 @@ doc-charcodes:
 flow-charcodes:
 	./node_modules/.bin/flow gen-flow-files packages/charcodes/src --out-dir packages/charcodes/lib
 
-build: doc-charcodes
+build:
 	./scripts/build.sh
 	make flow-charcodes
 
