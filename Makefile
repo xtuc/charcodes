@@ -3,20 +3,24 @@ export PATH := $(PATH):./node_modules/.bin/
 bootstrap:
 	make clean-all
 	yarn
-	lerna bootstrap
+	./node_modules/.bin/lerna bootstrap
 	make build
 
 doc-charcodes:
 	dump-exports ./packages/charcodes/src/index.js > ./packages/charcodes/README.md
 
-build: doc-charcodes
+flow-charcodes:
+	./node_modules/.bin/flow gen-flow-files packages/charcodes/src --out-dir packages/charcodes/lib
+
+build:
 	./scripts/build.sh
+	make flow-charcodes
 
 publish: build
-	lerna publish --force-publish=*
+	./node_modules/.bin/lerna publish --force-publish=*
 
 test:
-	lerna run test
+	./node_modules/.bin/lerna run test
 
 clean-all:
 	rm -rf node_modules
