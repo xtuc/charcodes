@@ -5,7 +5,7 @@
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.31",
     "@babel/core": "^7.0.0-beta.31",
-    "dump-exports": "^0.0.1",
+    "dump-exports": "0.0.2",
     "flow-bin": "^0.63.1",
     "lerna": "^2.5.1"
   }
