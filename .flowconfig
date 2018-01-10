@@ -1,0 +1,7 @@
+[ignore]
+.*/build/.*
+.*/packages/.*/lib
+.*/packages/.*/test
+
+[include]
+packages/*/src

@@ -1,5 +1,3 @@
-// @flow
-
 import * as charcodes from "charcodes"
 import {parse} from "babylon"
 import traverse from '@babel/traverse';

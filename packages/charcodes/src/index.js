@@ -104,6 +104,6 @@ export const oghamSpaceMark = 5760; // ' '
 export const lineSeparator = 8232;
 export const paragraphSeparator = 8233;
 
-export function isDigit(code: Char): boolean {
+export function isDigit(code: number): boolean {
   return code >= digit0 && code <= digit9;
 }

@@ -9,8 +9,12 @@ bootstrap:
 doc-charcodes:
 	dump-exports ./packages/charcodes/src/index.js > ./packages/charcodes/README.md
 
+flow-charcodes:
+	./node_modules/.bin/flow gen-flow-files packages/charcodes/src --out-dir packages/charcodes/lib
+
 build: doc-charcodes
 	./scripts/build.sh
+	make flow-charcodes
 
 publish: build
 	./node_modules/.bin/lerna publish --force-publish=*
