@@ -3,7 +3,7 @@ export PATH := $(PATH):./node_modules/.bin/
 bootstrap:
 	make clean-all
 	yarn
-	lerna bootstrap
+	./node_modules/.bin/lerna bootstrap
 	make build
 
 doc-charcodes:
@@ -13,10 +13,10 @@ build: doc-charcodes
 	./scripts/build.sh
 
 publish: build
-	lerna publish --force-publish=*
+	./node_modules/.bin/lerna publish --force-publish=*
 
 test:
-	lerna run test
+	./node_modules/.bin/lerna run test
 
 clean-all:
 	rm -rf node_modules
