@@ -1,6 +1,7 @@
 ## Exports
 
 - Constant number `backSpace`
+- Constant number `tab`
 - Constant number `lineFeed`
 - Constant number `carriageReturn`
 - Constant number `shiftOut`
