@@ -1,6 +1,7 @@
 // @flow
 
 export const backSpace = 8;
+export const tab = 9; //  '\t'
 export const lineFeed = 10; //  '\n'
 export const carriageReturn = 13; //  '\r'
 export const shiftOut = 14;
