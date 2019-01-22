@@ -2,7 +2,7 @@ export PATH := $(PATH):./node_modules/.bin/
 
 bootstrap:
 	make clean-all
-	yarn
+	yarn --ignore-engines
 	./node_modules/.bin/lerna bootstrap
 	make build
 
@@ -29,5 +29,3 @@ clean-all:
 	rm -rf packages/*/node_modules
 	rm -rf packages/*/lib
 	rm -rf packages/*/package-lock.json
-
-test-ci: bootstrap test

@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "make test-ci"
+    "test": "make test"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
