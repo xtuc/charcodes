@@ -2,7 +2,7 @@ export PATH := $(PATH):./node_modules/.bin/
 
 bootstrap:
 	make clean-all
-	yarn
+	yarn --ignore-engines
 	./node_modules/.bin/lerna bootstrap
 	make build
 
@@ -10,7 +10,8 @@ doc-charcodes:
 	dump-exports ./packages/charcodes/src/index.js > ./packages/charcodes/README.md
 
 flow-charcodes:
-	./node_modules/.bin/flow gen-flow-files packages/charcodes/src --out-dir packages/charcodes/lib
+	cp ./packages/charcodes/src/index.js ./packages/charcodes/lib/index.js.flow
+	cp ./packages/charcodes/src/index.js ./packages/charcodes/lib/index.mjs.flow
 
 build:
 	./scripts/build.sh
@@ -20,7 +21,7 @@ publish: build
 	./node_modules/.bin/lerna publish --force-publish=*
 
 test:
-	./node_modules/.bin/lerna run test
+	./node_modules/.bin/jest
 
 clean-all:
 	rm -rf node_modules
@@ -28,5 +29,3 @@ clean-all:
 	rm -rf packages/*/node_modules
 	rm -rf packages/*/lib
 	rm -rf packages/*/package-lock.json
-
-test-ci: bootstrap test

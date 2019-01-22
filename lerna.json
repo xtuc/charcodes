@@ -6,6 +6,6 @@
   "version": "0.1.1",
   "npmClient": "yarn",
   "npmClientArgs": [
-    "--no-lockfile"
+    "--ignore-engines"
   ]
 }

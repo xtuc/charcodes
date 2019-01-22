@@ -1,5 +1,5 @@
-import * as charcodes from "charcodes"
-import {parse} from "babylon"
+import * as charcodes from "charcodes";
+import { parse } from "@babel/parser";
 import traverse from '@babel/traverse';
 
 type ast = Object

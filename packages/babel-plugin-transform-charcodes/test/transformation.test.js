@@ -1,13 +1,12 @@
-import * as babylon from 'babylon';
+import { parse } from '@babel/parser';
 import * as types from '@babel/types';
 import generate from '@babel/generator';
 import traverse from '@babel/traverse';
-import {assert} from 'chai';
 
 import visitor from '../src';
 
 function transform(code) {
-  const ast = babylon.parse(code, {
+  const ast = parse(code, {
     sourceType: 'module',
   });
 
@@ -19,7 +18,7 @@ function transform(code) {
 function assertOutput(code, expected) {
   const out = transform(code);
 
-  assert.equal(out, expected);
+  expect(out).toEqual(expected);
 }
 
 describe('function', () => {
@@ -69,7 +68,7 @@ describe('constant', () => {
       charcodes.somethinglikefoobar
     `)
 
-    assert.throws(fn, /unknown key/);
+    expect(fn).toThrow(/unknown key/);
   })
 
 })
