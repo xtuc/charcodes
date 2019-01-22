@@ -19,9 +19,17 @@ for D in ./packages/*; do
 
   # Clean
   rm -rf "${D}/lib"
+  mkdir "${D}/lib"
 
-  # Build
-  ./node_modules/.bin/babel "${D}/src" \
-    --out-dir "${D}/lib" \
+  # Build cjs
+  ./node_modules/.bin/babel "${D}/src/index.js" \
+    -o "${D}/lib/index.js" \
+    --env-name "cjs" \
+    --quiet
+
+  # Build esm
+  ./node_modules/.bin/babel "${D}/src/index.js" \
+    -o "${D}/lib/index.mjs" \
+    --env-name "esm" \
     --quiet
 done

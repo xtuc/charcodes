@@ -104,5 +104,5 @@
 - Constant number `oghamSpaceMark`
 - Constant number `lineSeparator`
 - Constant number `paragraphSeparator`
-- Constant function `isDigit()`
+- function `isDigit(code)`
 

@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "Char codes constants",
   "main": "lib/index.js",
-  "module": "src/index.js",
+  "module": "lib/index.mjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xtuc/charcodes.git"
@@ -18,17 +18,5 @@
   "bugs": {
     "url": "https://github.com/xtuc/charcodes/issues"
   },
-  "homepage": "https://github.com/xtuc/charcodes#readme",
-  "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.5",
-    "@babel/core": "^7.0.0-beta.5",
-    "@babel/preset-env": "^7.0.0-beta.5",
-    "@babel/preset-flow": "^7.0.0-beta.5"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-flow",
-      "@babel/preset-env"
-    ]
-  }
+  "homepage": "https://github.com/xtuc/charcodes#readme"
 }
