@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-charcodes",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Replace charcodes AOT",
   "main": "lib/index.js",
   "module": "lib/index.mjs",
@@ -25,13 +25,13 @@
   "homepage": "https://github.com/xtuc/charcodes#readme",
   "devDependencies": {
     "@babel/types": "^7.0.0",
-    "charcodes": "^0.1.1"
+    "charcodes": "^0.2.0"
   },
   "dependencies": {
-    "@babel/traverse": "^7.0.0",
-    "@babel/parser": "^7.0.0"
+    "@babel/parser": "^7.0.0",
+    "@babel/traverse": "^7.0.0"
   },
   "peerDependencies": {
-    "charcodes": "^0.1.1"
+    "charcodes": "^0.2.0"
   }
 }
