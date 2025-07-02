@@ -24,7 +24,7 @@ export default function (babel) {
         const name = path.node.name
 
         if (typeof charcodes[name] !== "undefined" && typeof charcodes[name] !== "function") {
-          path.replaceWith(t.NumericLiteral(charcodes[name]))
+          path.replaceWith(t.numericLiteral(charcodes[name]))
         }
       }
     })
@@ -60,7 +60,7 @@ export default function (babel) {
           if (typeof charCodeValue === "undefined") {
             throw new Error("unknown key " + rightName)
           } else if (typeof charCodeValue !== "function") {
-            path.replaceWith(t.NumericLiteral(charCodeValue))
+            path.replaceWith(t.numericLiteral(charCodeValue))
           } else {
             const fn = parseFunctionSource(charCodeValue.toString())
             const id = path.scope.generateUidIdentifier(rightName)
