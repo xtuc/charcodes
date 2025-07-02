@@ -60,7 +60,7 @@ export default function (babel) {
           if (typeof charCodeValue === "undefined") {
             throw new Error("unknown key " + rightName)
           } else if (typeof charCodeValue !== "function") {
-            path.replaceWith(t.NumericLiteral(charCodeValue))
+            path.replaceWith(t.NumberLiteral(charCodeValue))
           } else {
             const fn = parseFunctionSource(charCodeValue.toString())
             const id = path.scope.generateUidIdentifier(rightName)
